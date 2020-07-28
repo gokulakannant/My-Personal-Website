@@ -14,6 +14,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import {Link} from 'react-router-dom';
+import { registerPageVisit } from "../../../helpers/GoogleAnalytics";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -69,9 +70,11 @@ export default function App({ history }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(getTabValue(history));
   const matches = useMediaQuery('(min-width:600px)');
+  registerPageVisit(value);
 
   function handleChange(event, newValue) {
     setValue(newValue);
+    registerPageVisit(newValue);
   }
 
   const tabClassess = { 

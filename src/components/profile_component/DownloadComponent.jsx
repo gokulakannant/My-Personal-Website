@@ -1,10 +1,10 @@
 import React from "react";
-import ReactGA from "react-ga";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import CloudDownload from "@material-ui/icons/CloudDownload";
 import PersonIcon from '@material-ui/icons/Person';
 import ResumePdf from "../../assets/doc/Gokulakannan.pdf";
+import { registerResumeDownloads, registerHireMeClicks } from "../../helpers/GoogleAnalytics";
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -24,12 +24,7 @@ export default function DownloadComponent() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    ReactGA.event({
-      category: "Resume",
-      action: `Downloaded the resume at ${new Date().toDateString()}`,
-      label: "Download"
-    });
+    registerResumeDownloads();
   }
 
   function hireMe() {
@@ -38,6 +33,7 @@ export default function DownloadComponent() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    registerHireMeClicks();
   }
 
   return (

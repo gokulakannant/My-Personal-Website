@@ -5,7 +5,6 @@ import ItemGrid from "../layouts/grid/ItemGrid";
 import avator from "../../assets/images/ProfileImage.jpg";
 import DownloadComponent from "./DownloadComponent";
 import Grow from '@material-ui/core/Grow';
-// import withFade from "../layouts/animations/Fade";
 
 function ProfileComponent() {
   return (

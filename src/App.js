@@ -1,5 +1,4 @@
 import React from "react";
-import ReactGA from 'react-ga';
 import { withStyles } from "@material-ui/core/styles";
 import {createMuiTheme} from "@material-ui/core";
 import { ThemeProvider } from '@material-ui/styles';
@@ -18,6 +17,7 @@ import Education from "./components/education_component";
 import PersonalInfo from "./components/personal_info_component";
 import Header from "./components/layouts/common/Header";
 import "./assets/scss/fonts.scss";
+import { registerGoogleAnalytics } from "./helpers/GoogleAnalytics";
 
 const styles = theme => ({
   mainDiv: {
@@ -39,18 +39,6 @@ const styles = theme => ({
   }
 });
 
-function initializeReactGA() {
-  ReactGA.initialize("UA-142421407-1");
-  ReactGA.pageview(window.location.pathname);
-  ReactGA.event({
-    category: 'Visiting',
-    action: 'Visted the site',
-    label: 'Home Page'
-  });
-}
-
-initializeReactGA();
-
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
@@ -61,13 +49,17 @@ const theme = createMuiTheme({
 
 class App extends React.Component {
 
+  componentDidMount() {
+    registerGoogleAnalytics();
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <Router>
         <ThemeProvider theme={theme}>
             <div className={classes.mainDiv}>
-                <Header history={createBrowserHistory()} />
+                <Header history={createBrowserHistory()}/>
                 <Switch>
                   <Route exact path="/"><Redirect to="/profile" /></Route>
                   <Route exact={true} path='/profile' component={ProfileComponent} />
