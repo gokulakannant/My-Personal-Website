@@ -8,9 +8,9 @@ import {
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import ReactJsTyping from 'reactjs-typing-effect';
 import Image from "../common/Image";
 import profileCardStyle from "../../../assets/jss/react-material-resume/profileCardStyle";
-import ReactJsTyping from 'reactjs-typing-effect';
 
 function ProfileCard({ ...props }) {
   const { classes, subtitle, title, description, footer, avatar } = props;
@@ -31,7 +31,7 @@ function ProfileCard({ ...props }) {
         ) : null}
         {subtitle !== undefined ? (
           <Typography component="h6" className={classes.cardSubtitle}>
-            <ReactJsTyping StringList={subtitle} speed={500}/>
+            <ReactJsTyping StringList={subtitle} speed={1000}/>
           </Typography>
         ) : null}
         {description !== undefined ? (

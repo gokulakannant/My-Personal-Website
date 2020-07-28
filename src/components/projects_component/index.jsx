@@ -2,10 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Grow from '@material-ui/core/Grow';
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import RegularCard from "../layouts/cards/RegularCard";
 import ItemGrid from "../layouts/grid/ItemGrid";
 import ProjectCard from "../layouts/cards/ProjectCard";
 import { projects, ownProjects } from "../../data/projects";
+import ScrollToTop from "../layouts/common/ScrollToTop";
 
 const styles = theme => ({
   root: {
@@ -23,6 +27,8 @@ const styles = theme => ({
 function ProjectsComponent(props) {
   const { classes } = props;
   return (
+    <React.Fragment>
+    <Grow in={true} timeout={1000}>
     <Grid container className={classes.root}>
       <ItemGrid item xs={12} sm={12} md={12}>
         <RegularCard
@@ -65,6 +71,13 @@ function ProjectsComponent(props) {
         />
       </ItemGrid>
     </Grid>
+    </Grow>
+    <ScrollToTop {...props}>
+      <Fab color="primary" size="medium" aria-label="scroll back to top">
+        <KeyboardArrowUpIcon />
+      </Fab>
+    </ScrollToTop>
+  </React.Fragment>
   );
 }
 

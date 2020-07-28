@@ -12,17 +12,12 @@ import List from "@material-ui/icons/List";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import { createBrowserHistory } from "history";
+import Typography from "@material-ui/core/Typography";
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    // flexGrow: 1
   },
   mobStepperOverride: {
     flex: "0 1 40px",
@@ -35,53 +30,87 @@ const useStyles = makeStyles(theme => ({
     color: "red"
   },
   logo: {
-    width: 135,
-    height: 43.54
+    height: "50px",
+    paddingTop: ".35rem",
+    paddingBottom: ".35rem",
+    marginRight: "1rem"
+  },
+  title: {
+
+  },
+  fullHeight: {
+    ...theme.mixins.toolbar,
+  },
+  navBrand: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+  },
+  labelContainer: {
+    width: "auto",
+    padding: 0
+  },
+  iconLabelWrapper: {
+    flexDirection: "row"
+  },
+  tabText: {
+      marginLeft: "3px"
   }
 }));
 
-export default function App() {
+function getTabValue(history) {
+  if (history.location.pathname === "/") {
+    return "profile";
+  }
+  return history.location.pathname.substr(1);
+}
+
+export default function App({ history }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(-1);
+  const [value, setValue] = React.useState(getTabValue(history));
   const matches = useMediaQuery('(min-width:600px)');
 
   function handleChange(event, newValue) {
     setValue(newValue);
   }
 
+  const tabClassess = { 
+      root: classes.fullHeight, 
+      wrapper: classes.iconLabelWrapper
+  }
+
   return (
     <Fragment>
       <div className={classes.root}>
         <AppBar position="static" color="default">
-            <Toolbar style={{ alignItems: "center", justifyContent: "center" }}>
-                <Grid justify={"center"} alignItems={"center"} container>
-                    <Grid style={{ justifySelf: "flex-start" }} item>
+            <Toolbar  id="back-to-top-anchor">
+                <Grid container alignItems="center" justify="space-between">
+                    <Grid item className={classes.navBrand}>
                         <img
                             className={classes.logo}
-                            src={
-                            "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-                            }
-                            alt="Bosch Logo"
+                            src={"/images/GT.png"}
+                            alt="Avator"
                         />
+                        <Typography color="inherit" variant="h5">
+                            GOKULAKANNAN T
+                        </Typography>
                     </Grid>
                     <Grid item>
-                        <Grid container justify={"center"}>
-                            <Tabs
-                                value={value}
-                                onChange={handleChange}
-                                variant={(matches)? "fullWidth" : "scrollable"}
-                                scrollButtons="on"
-                                indicatorColor="primary"
-                                textColor="primary"
-                                >
-                                <Tab label="Gokulakannan T" icon={<PersonPinIcon />} />
-                                <Tab label="Skills" icon={<Code />} />
-                                <Tab label="Work" icon={<Work />} />
-                                <Tab label="Projects" icon={<List />} />
-                                <Tab label="Education" icon={<School />} />
-                                <Tab label="personal Info" icon={<ContactMail />} />
-                            </Tabs>
-                        </Grid>
+                        <Tabs
+                            value={value}
+                            onChange={handleChange}
+                            variant={(matches)? "fullWidth" : "scrollable"}
+                            scrollButtons="on"
+                            indicatorColor="primary"
+                            textColor="primary"
+                            >
+                            <Tab component={Link} to="/profile" icon={<><PersonPinIcon /> <span className={classes.tabText}>Profile</span></>} classes={tabClassess} value="profile"/>
+                            <Tab component={Link} to="/skills" icon={<><Code /> <span className={classes.tabText}>Skills</span></>} classes={tabClassess} value="skills"/>
+                            <Tab component={Link} to="/work" icon={<><Work /> <span className={classes.tabText}>Work</span></>} classes={tabClassess} value="work"/>
+                            <Tab component={Link} to="/projects" icon={<><List /> <span className={classes.tabText}>Projects</span></>} classes={tabClassess} value="projects"/>
+                            <Tab component={Link} to="/education" icon={<><School /> <span className={classes.tabText}>Education</span></>} classes={tabClassess} value="education"/>
+                            <Tab component={Link} to="/contact" icon={<><ContactMail /> <span className={classes.tabText}>Contact</span></>} classes={tabClassess} value="contact"/>
+                        </Tabs>
                     </Grid>
                 </Grid>
           </Toolbar>

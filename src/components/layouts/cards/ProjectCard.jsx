@@ -54,7 +54,7 @@ function ProjectCard({ title, description, siteUrl, technologyStack }) {
                   {title}
                 </Typography>
                 {description.split(". ").map((value, index) => {
-                  return <Typography paragraph key={index}>{value}</Typography>
+                  return <Typography variant="subtitle1" color="textSecondary" component="p" key={index}>{value}</Typography>
                 })}
                 <div className={classes.chips}>
                   {technologyStack.map((tech, index) => {

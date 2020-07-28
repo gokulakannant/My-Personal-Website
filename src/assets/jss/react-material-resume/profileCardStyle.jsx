@@ -33,7 +33,7 @@ const profileCardStyle = {
         textAlign: "center"
     },
     cardSubtitle: {
-        // color: grayColor,
+        color: grayColor,
         ...defaultFont,
         fontSize: "1.5em",
         textTransform: "uppercase",
@@ -46,10 +46,7 @@ const profileCardStyle = {
         marginTop: "10px",
         marginBottom: "10px",
         fontWeight: "bold",
-        fontSize: "3em",
-        marginTop: "10px",
         lineHeight: "1.5em",
-        marginBottom: "10px",
         background: "linear-gradient(180deg,#3f51b5,#637bff)",
         "-webkit-background-clip": "text",
         "-webkit-text-fill-color": "transparent"
