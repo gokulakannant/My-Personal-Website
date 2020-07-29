@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -17,9 +17,6 @@ import {Link} from 'react-router-dom';
 import { registerPageVisit } from "../../../helpers/GoogleAnalytics";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    // flexGrow: 1
-  },
   mobStepperOverride: {
     flex: "0 1 40px",
     width: "100%"
@@ -36,15 +33,11 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: ".35rem",
     marginRight: "1rem"
   },
-  title: {
-
-  },
   fullHeight: {
     ...theme.mixins.toolbar,
   },
   navBrand: {
       display: "flex",
-      justifyContent: "space-between",
       alignItems: "center"
   },
   labelContainer: {
@@ -83,42 +76,38 @@ export default function App({ history }) {
   }
 
   return (
-    <Fragment>
-      <div className={classes.root}>
-        <AppBar position="static" color="default">
-            <Toolbar  id="back-to-top-anchor">
-                <Grid container alignItems="center" justify="space-between">
-                    <Grid item className={classes.navBrand}>
-                        <img
-                            className={classes.logo}
-                            src={"/images/GT.png"}
-                            alt="Avator"
-                        />
-                        <Typography color="inherit" variant="h5">
-                            GOKULAKANNAN T
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Tabs
-                            value={value}
-                            onChange={handleChange}
-                            variant={(matches)? "fullWidth" : "scrollable"}
-                            scrollButtons="on"
-                            indicatorColor="primary"
-                            textColor="primary"
-                            >
-                            <Tab component={Link} to="/profile" icon={<><PersonPinIcon /> <span className={classes.tabText}>Profile</span></>} classes={tabClassess} value="profile"/>
-                            <Tab component={Link} to="/skills" icon={<><Code /> <span className={classes.tabText}>Skills</span></>} classes={tabClassess} value="skills"/>
-                            <Tab component={Link} to="/work" icon={<><Work /> <span className={classes.tabText}>Work</span></>} classes={tabClassess} value="work"/>
-                            <Tab component={Link} to="/projects" icon={<><List /> <span className={classes.tabText}>Projects</span></>} classes={tabClassess} value="projects"/>
-                            <Tab component={Link} to="/education" icon={<><School /> <span className={classes.tabText}>Education</span></>} classes={tabClassess} value="education"/>
-                            <Tab component={Link} to="/contact" icon={<><ContactMail /> <span className={classes.tabText}>Contact</span></>} classes={tabClassess} value="contact"/>
-                        </Tabs>
-                    </Grid>
-                </Grid>
-          </Toolbar>
-        </AppBar>
-      </div>
-    </Fragment>
+      <AppBar position="static" color="default">
+          <Toolbar  id="back-to-top-anchor">
+              <Grid container alignItems="center" justify="space-between">
+                  <Grid item className={classes.navBrand} xs={12} sm={12} md={4}>
+                      <img
+                          className={classes.logo}
+                          src={"/images/GT.png"}
+                          alt="Avator"
+                      />
+                      <Typography color="inherit" variant="h5">
+                          GOKULAKANNAN T
+                      </Typography>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={8}>
+                      <Tabs
+                          value={value}
+                          onChange={handleChange}
+                          variant={(matches)? "fullWidth" : "scrollable"}
+                          scrollButtons="on"
+                          indicatorColor="primary"
+                          textColor="primary"
+                          >
+                          <Tab component={Link} to="/profile" icon={<><PersonPinIcon /> <span className={classes.tabText}>Profile</span></>} classes={tabClassess} value="profile"/>
+                          <Tab component={Link} to="/skills" icon={<><Code /> <span className={classes.tabText}>Skills</span></>} classes={tabClassess} value="skills"/>
+                          <Tab component={Link} to="/work" icon={<><Work /> <span className={classes.tabText}>Work</span></>} classes={tabClassess} value="work"/>
+                          <Tab component={Link} to="/projects" icon={<><List /> <span className={classes.tabText}>Projects</span></>} classes={tabClassess} value="projects"/>
+                          <Tab component={Link} to="/education" icon={<><School /> <span className={classes.tabText}>Education</span></>} classes={tabClassess} value="education"/>
+                          <Tab component={Link} to="/contact" icon={<><ContactMail /> <span className={classes.tabText}>Contact</span></>} classes={tabClassess} value="contact"/>
+                      </Tabs>
+                  </Grid>
+              </Grid>
+        </Toolbar>
+      </AppBar>
   );
 }
