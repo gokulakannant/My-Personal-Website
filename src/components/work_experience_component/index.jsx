@@ -85,7 +85,7 @@ function WorkExperienceComponent(props) {
                   <WorkExperienceCard
                     logo={""}
                     title={"Contus Support Interactive Pvt. Ltd (Client Place)"}
-                    subtitle={"November 28, 2016 - Present"}
+                    subtitle={"April 09, 2016 - March 31, 2020"}
                     description={
                       `Contus is a technology company which primarily provides mobile, web, and Cloud based solutions.
                       The company is headquartered at Chennai, India. Contus is a member of the Confederation of Indian Industry`
