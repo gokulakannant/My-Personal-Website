@@ -111,6 +111,24 @@ export default function PersonalInfo() {
                   <ListItem>
                     <ListItemAvatar>
                       <Avatar>
+                        <IconButton aria-label="Stackoverflow">
+                          <SvgIcon>
+                          <path d="M17.36 20.2v-5.38h1.79V22H3v-7.18h1.8v5.38h12.56M6.77 14.32l.37-1.76l8.79 1.85l-.37 1.76l-8.79-1.85m1.16-4.21l.76-1.61l8.14 3.78l-.76 1.62l-8.14-3.79m2.26-3.99l1.15-1.38l6.9 5.76l-1.15 1.37l-6.9-5.75m4.45-4.25L20 9.08l-1.44 1.07l-5.36-7.21l1.44-1.07M6.59 18.41v-1.8h8.98v1.8H6.59z" fill="#575757"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" />
+                          </SvgIcon>
+                        </IconButton>
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText
+                      className={classes.hasHref}
+                      onClick={() => { window.open("https://stackoverflow.com/users/8579855/gokulakannan-t", "_blank"); }}
+                      primary="Stack Overflow"
+                      secondary="http://stackoverflow.com/u/8579855"
+                    />
+                  </ListItem>
+                  <Divider variant="inset" component="li" />
+                  <ListItem>
+                    <ListItemAvatar>
+                      <Avatar>
                         <IconButton aria-label="Skype">
                           <SvgIcon>
                             <path d="M22.987 13.966c1.357-7.765-5.416-14.412-13.052-12.979-5.821-3.561-12.503 3.226-8.935 9.029-1.387 7.747 5.384 14.48 13.083 13.01 5.832 3.536 12.493-3.26 8.904-9.06zm-10.603 5.891c-3.181 0-6.378-1.448-6.362-3.941.005-.752.564-1.442 1.309-1.442 1.873 0 1.855 2.795 4.837 2.795 2.093 0 2.807-1.146 2.807-1.944 0-2.886-9.043-1.117-9.043-6.543 0-2.938 2.402-4.962 6.179-4.741 3.602.213 5.713 1.803 5.917 3.289.101.971-.542 1.727-1.659 1.727-1.628 0-1.795-2.181-4.6-2.181-1.266 0-2.334.528-2.334 1.674 0 2.395 8.99 1.005 8.99 6.276-.001 3.039-2.423 5.031-6.041 5.031z"/>
